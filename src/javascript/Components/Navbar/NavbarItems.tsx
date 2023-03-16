@@ -1,17 +1,22 @@
+import { HomeOutlined, IdcardOutlined, LaptopOutlined } from "@ant-design/icons";
+
 export const navbarItems = [
   {
     to: "/",
     label: "Home",
     key: "home",
+    icon: <HomeOutlined />
   },
   {
-    to: "/page1",
-    label: "Page 1",
-    key: "page1",
+    to: "/account-info",
+    label: "Account",
+    key: "accountInfo",
+    icon: <IdcardOutlined />
   },
   {
     to: "/page2",
     label: "Page 2",
     key: "sub-page2",
+    icon: <LaptopOutlined />
   },
 ];

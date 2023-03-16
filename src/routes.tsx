@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./javascript/Components/Home";
-import Page1 from "./javascript/Components/Page1";
+import AccountInfo from "./javascript/Components/AccountInfo";
 import Page2 from "./javascript/Components/Page2";
 
 const routes = [
@@ -10,9 +10,9 @@ const routes = [
     element: <Home />,
   },
   {
-    path: "/page1",
-    label: "Page1",
-    element: <Page1 />,
+    path: "/account-info",
+    label: "AccountInfo",
+    element: <AccountInfo />,
   },
   {
     path: "/page2",

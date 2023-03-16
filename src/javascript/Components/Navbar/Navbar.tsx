@@ -34,6 +34,10 @@ const NavbarHeader = styled(Layout.Header)`
       border-color: #1677ff;
       color: #1677ff;
     }
+
+    span {
+      margin-right: 10px;
+    }
   }
 `
 
@@ -44,7 +48,10 @@ const Navbar: React.FC = () => (
         {navbarItems.map((item) => (
           <li key={item.key}>
             <NavLink to={item.to}>
-              {item.label}
+              <>
+                {item.icon}
+                {item.label}
+              </>
             </NavLink>
           </li>
         ))}
