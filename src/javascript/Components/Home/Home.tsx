@@ -19,7 +19,6 @@ const Home: React.FC = () => {
     }
   }, []);
 
-  console.log(list);
   return (
     <div>
       <h1>Home page</h1>

@@ -5,13 +5,14 @@ import { Layout } from "antd";
 import RouteConfig from "../../../routes";
 
 const App: React.FC = () => {
+  const { Content } = Layout
 
   return (
     <div className="App">
       <Navbar />
-      <Layout.Content>
+      <Content>
         <RouteConfig />
-      </Layout.Content>
+      </Content>
     </div>
   );
 };
