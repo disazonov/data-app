@@ -13,8 +13,10 @@ const ItemWrapper = styled.div`
   }
 `
 const Home: React.FC = () => {
-  const [list, setList] = useState<any[]>([]);
-  const [filtered, setFiltered] = useState(false)
+  const [list, setList] = useState<any[]>([])
+  const [filteredList, setFilteredList] = useState<any[]>([])
+  const [filteredDevices, setFilteredDevices] = useState(false)
+  const selectedList = filteredDevices ? filteredList : list
 
   useEffect(() => {
     if (Object.keys(list).length === 0) {
@@ -26,22 +28,24 @@ const Home: React.FC = () => {
   }, []);
 
   const getMyDevices = () => {
-    if (!filtered) {
-      const mapped = list.map((item: Array<String>) => item)
-      const filtered = mapped.filter((item: any) => item.title.includes('MacBook'))
-      setList(filtered)
-      setFiltered(true)
+    if (!filteredDevices) {
+      const myDevices = list
+        .map((item: Array<String>) => item)
+        .filter((item: any) => item.title.includes('MacBook'))
+      setFilteredList(myDevices)
+      setFilteredDevices(true)
+      return
     }
 
-    return
+    setFilteredDevices(false)
   }
 
   return (
     <div>
       <h1>Home page</h1>
-      <Button onClick={getMyDevices}>Show My Devices</Button>
+      <Button onClick={getMyDevices}>{filteredDevices ? 'Show devices list' : 'Show my devices'}</Button>
       <ItemWrapper>
-        {list.map(item => (
+        {selectedList.map(item => (
           <Card key={item.id} title={item.title} className="item-card">
             {item.description}
           </Card>
