@@ -1,5 +1,6 @@
-import React, { FC, FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
+import { CloseCircleOutlined } from "@ant-design/icons";
 import { Button } from 'antd';
 
 const FiltersWrapper = styled.div`
@@ -14,30 +15,31 @@ const FiltersWrapper = styled.div`
 
 interface IFiltersProps {
   deviceList: Array<any>,
-  filteredDevices: Boolean,
   setFilteredDeviceList: Function,
   setFilteredDevices: Function,
 }
 
-const Filters: React.FunctionComponent<IFiltersProps> = (props: IFiltersProps) => {
-  const { deviceList, filteredDevices, setFilteredDeviceList, setFilteredDevices } = props
-  const getMyDevices = () => {
-    if (!filteredDevices) {
-      const myDevices = deviceList
-        .map((item: Array<object>) => item)
-        .filter((item: any) => item.brand === 'Apple')
+const Filters: FunctionComponent<IFiltersProps> = (props: IFiltersProps) => {
+  const { deviceList, setFilteredDeviceList, setFilteredDevices } = props
+  const handleGetDevices = (brand: string) => {
+    const myDevices = deviceList
+      .map((item: Array<object>) => item)
+      .filter((item: any) => item.brand === brand)
 
-      setFilteredDeviceList(myDevices)
-      setFilteredDevices(true)
-      return
-    }
+    setFilteredDeviceList(myDevices)
+    setFilteredDevices(true)
+  }
 
+  const handleResetFilter = () => {
+    setFilteredDeviceList(deviceList)
     setFilteredDevices(false)
   }
 
   return (
     <FiltersWrapper>
-      <Button onClick={getMyDevices}>{filteredDevices ? 'Show devices list' : 'Show my devices'}</Button>
+      <Button onClick={() => handleGetDevices('Apple')}>Show apple devices</Button>
+      <Button onClick={() => handleGetDevices('Samsung')}>Show apple devices</Button>
+      <Button onClick={handleResetFilter} icon={<CloseCircleOutlined />}>Reset filters</Button>
     </FiltersWrapper>
   )
 }

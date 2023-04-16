@@ -22,7 +22,7 @@ const Home: React.FunctionComponent = () => {
   return (
     <div>
       <h1>Home page</h1>
-      <Filters deviceList={deviceList} filteredDevices={filteredDevices} setFilteredDevices={setFilteredDevices} setFilteredDeviceList={setFilteredDeviceList} />
+      <Filters deviceList={deviceList} setFilteredDeviceList={setFilteredDeviceList} setFilteredDevices={setFilteredDevices} />
       <HomeCard selectedList={selectedList} />
     </div >
   );
